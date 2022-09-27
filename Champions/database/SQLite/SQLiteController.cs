@@ -1,8 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class SQLiteController
+namespace Champions.database.SQLite
 {
-	public SQLiteController()
-	{
-	}
+    public class SQLiteController
+    {
+        public ChampionDatabase ChampionsDatabase;
+
+        public SQLiteController()
+        {
+            SetupDatabases();
+        }
+
+        void SetupDatabases()
+        {
+            this.ChampionsDatabase = new ChampionDatabase();
+        }
+    }
 }

@@ -18,5 +18,6 @@ namespace Champions
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
         }
+       
     }
 }

@@ -18,9 +18,25 @@ namespace Champions.database.SQLite
         {
             if (!SetUpConnection())
             {
-                throw new NotSupportedException();
+
             }
         }
+        /// <summary>
+        /// Connecting check to database
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckConnectionStatus()
+        {
+            if (SqlConnection != null)
+            {
+                if (SQLiteGetDataTable("SELECT 1").Columns.Count > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Closes connetion to database
         /// </summary>
@@ -56,7 +72,7 @@ namespace Champions.database.SQLite
         /// <returns>if the setup was succesfull</returns>
         public bool SetUpConnection()
         {
-            throw new NotImplementedException();
+            return false;
         }
         /// <summary>
         /// Method proceeds sql param

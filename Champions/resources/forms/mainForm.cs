@@ -19,13 +19,37 @@ namespace Champions
             InitializeComponent();
 
             SetupDatabase();
+
+            defaultState();
         }
-         /// <summary>
+
+        private void defaultState()
+        {
+            timer_Tick(null, null);
+        }
+
+        /// <summary>
         /// Setup the database configuration
         /// </summary>
-        static void SetupDatabase()
+        void SetupDatabase()
         {
-            SQLiteController SqliteControler = new SQLiteController();
+            this.SqliteControler = new SQLiteController();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            bool connectionSQLite = false;
+
+            connectionSQLite = SqliteControler.ChampionsDatabase.CheckConnectionStatus();
+
+            if (connectionSQLite)
+            {
+                sqliteConnectionLbl.Text = "SQLite database: Připojená";
+            }
+            else
+            {
+                sqliteConnectionLbl.Text = "SQLite database: Nepřipojená";
+            }
         }
     }
 }
